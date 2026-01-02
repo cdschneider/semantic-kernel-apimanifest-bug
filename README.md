@@ -42,6 +42,10 @@ var functionExecutionParameters = new OpenApiFunctionExecutionParameters
 await kernel.ImportPluginFromOpenApiAsync("MyWeatherPlugin", "openapi.json", functionExecutionParameters);
 ```
 
+## Prerequisites
+
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+
 ## Running the Tests
 
 ```bash
