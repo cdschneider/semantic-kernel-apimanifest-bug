@@ -1,12 +1,10 @@
-# Semantic Kernel API Manifest Bug Repro
-
-This repository demonstrates a bug where `OpenApiFunctionExecutionParameters` callbacks (`HttpResponseContentReader` and `RestApiOperationResponseFactory`) are not invoked when loading plugins via `ImportPluginFromApiManifestAsync`.
+This repo demonstrates a bug where `OpenApiFunctionExecutionParameters` callbacks (`HttpResponseContentReader` and `RestApiOperationResponseFactory`) are not invoked when loading plugins when importing an OpenAPI ApiManifest (via `ImportPluginFromApiManifestAsync`).
 
 ## The Bug
 
 When using `ApiManifestPluginParameters.FunctionExecutionParameters` to pass custom callbacks, they are never called during function invocation.
 
-**Test:** `WeatherGovAsApiManifest` (FAILS)
+**Test:** `WeatherGovAsApiManifest` - Fails ⛔
 
 ```csharp
 var functionExecutionParameters = new Dictionary<string, OpenApiFunctionExecutionParameters>
@@ -30,7 +28,7 @@ await kernel.ImportPluginFromApiManifestAsync("MyWeatherPlugin", "manifest.json"
 
 When using `ImportPluginFromOpenApiAsync` directly with `OpenApiFunctionExecutionParameters`, the callbacks are invoked as expected.
 
-**Test:** `WeatherGovAsOpenApi` (PASSES)
+**Test:** `WeatherGovAsOpenApi` - Passes :white_check_mark:
 
 ```csharp
 var functionExecutionParameters = new OpenApiFunctionExecutionParameters
@@ -52,5 +50,5 @@ await kernel.ImportPluginFromOpenApiAsync("MyWeatherPlugin", "openapi.json", fun
 dotnet test
 ```
 
-- `WeatherGovAsOpenApi` - passes
-- `WeatherGovAsApiManifest` - fails (callbacks not invoked)
+- `WeatherGovAsOpenApi` - Passes :white_check_mark:
+- `WeatherGovAsApiManifest` - Fails ⛔
