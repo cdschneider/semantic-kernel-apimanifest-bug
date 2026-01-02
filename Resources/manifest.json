@@ -1,0 +1,14 @@
+{
+  "applicationName": "Weather Plugin",
+  "apiDependencies": {
+    "api.weather.gov": {
+      "apiDescriptionUrl": "./openapi.json",
+      "requests": [
+        {
+          "method": "GET",
+          "uriTemplate": "/points/{latitude},{longitude}"
+        }
+      ]
+    }
+  }
+}
